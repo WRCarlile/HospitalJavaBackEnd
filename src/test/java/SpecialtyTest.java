@@ -15,15 +15,15 @@ public class SpecialtyTest {
     try(Connection con = DB.sql2o.open()) {
       String deleteDoctorsQuery = "DELETE FROM doctor *;";
       String deleteSpecialtiesQuery = "DELETE FROM specialty *;";
-      // String deletePatientsQuery = "DELETE FROM patients *;";
+      String deletePatientsQuery = "DELETE FROM patients *;";
       con.createQuery(deleteDoctorsQuery).executeUpdate();
       con.createQuery(deleteSpecialtiesQuery).executeUpdate();
-      // con createQuery(deletePatientsQuery).executeUpdate();
+      con.createQuery(deletePatientsQuery).executeUpdate();
     }
   }
 
   @Test
-  public void doctor_instantiatesCorrectly_true() {
+  public void specialty_instantiatesCorrectly_true() {
     Specialty mySpecialty = new Specialty("General Practicioner", 1);
     assertEquals(true, mySpecialty instanceof Specialty);
   }

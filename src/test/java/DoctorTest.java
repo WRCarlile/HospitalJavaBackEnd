@@ -15,10 +15,10 @@ public class DoctorTest {
     try(Connection con = DB.sql2o.open()) {
       String deleteDoctorsQuery = "DELETE FROM doctor *;";
       String deleteSpecialtiesQuery = "DELETE FROM specialty *;";
-      // String deletePatientsQuery = "DELETE FROM patients *;";
+      String deletePatientsQuery = "DELETE FROM patients *;";
       con.createQuery(deleteDoctorsQuery).executeUpdate();
       con.createQuery(deleteSpecialtiesQuery).executeUpdate();
-      // con createQuery(deletePatientsQuery).executeUpdate();
+      con.createQuery(deletePatientsQuery).executeUpdate();
     }
   }
 
