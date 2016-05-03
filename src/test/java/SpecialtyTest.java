@@ -27,4 +27,35 @@ public class SpecialtyTest {
     Specialty mySpecialty = new Specialty("General Practicioner", 1);
     assertEquals(true, mySpecialty instanceof Specialty);
   }
+
+  @Test
+  public void getName_specialtyInstantiatesWithName_String() {
+    Specialty mySpecialty = new Specialty("General Practicioner", 1);
+    assertEquals("General Practicioner", mySpecialty.getName());
+  }
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Specialty.all().size(), 0);
+  }
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame() {
+    Specialty firstSpecialty = new Specialty("General Practicioner", 1);
+    Specialty secondSpecialty = new Specialty("General Practicioner", 1);
+    assertTrue(firstSpecialty.equals(secondSpecialty));
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Specialty mySpecialty = new Specialty("General Practicioner", 1);
+    mySpecialty.save();
+    assertTrue(Specialty.all().get(0).equals(mySpecialty));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Specialty mySpecialty = new Specialty("General Practicioner", 1);
+    mySpecialty.save();
+    Specialty savedSpecialty = Specialty.all().get(0);
+    assertEquals(mySpecialty.getId(), savedSpecialty.getId());
+  }
 }
